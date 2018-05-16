@@ -8,6 +8,7 @@
 <!-- Fogli di stile -->
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
   body{
@@ -24,6 +25,7 @@
     height: 50px;
     line-height: 35px;
     white-space: nowrap;
+  
    
 }
 
@@ -32,7 +34,7 @@
 .table-area {
   position: relative;
   z-index: 0;
-  margin-top: 0px;
+  margin-top: 30px;
 }
 
 table.responsive-table {
@@ -49,7 +51,7 @@ table.responsive-table thead {
   position: fixed;
   top: 60px;
   width: 100%;
-  line-height: 2em;
+  line-height: 1rem;
   background: rgb(255, 255, 255);
   table-layout: fixed;
   display: table;
@@ -65,7 +67,30 @@ table.responsive-table td {
 
 table.responsive-table tr > td,
 table.responsive-table th {
-  text-align: left;
+  text-align: center;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+/* Style buttons */
+.btn {
+    background-color: DodgerBlue; /* Blue background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 12px 16px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+    border-radius: 50%;
+
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+    background-color: RoyalBlue;
 }
 
 </style>
@@ -80,145 +105,160 @@ table.responsive-table th {
            <li class="nav-item">
              <a class="navbar-brand" href="#">LODeX<span class="sr-only">(current)</span></a>
              <a class="navbar-brand" href="/lodex2/ok/graph-view">Graph View</a>
-             <a class="navbar-brand" href="query_panel.html">Query Panel</a>
+             <a class="navbar-brand" href="/lodex2/ok/query-panel">Query Panel</a>
            </li>
          </ul>
          </div>
        </nav>
 
 <!-- Tabella  -->
-       <section class="content-area">
-        <div class="table-area">
-          <table class="responsive-table table">
+<section class="content-area">
+    <div class="table-area">
+      <table class="responsive-table table">
             <thead class="thead-light">
               <tr>
-                <th>Dataset Name</th>
-                      <th>Triples</th>
-                      <th>Class Number</th>
-                      <th>Properties Number</th>
-                      <th>Instance Number</th>
+                <th scope="col" colspan="3">Dataset Name</th>
+                      <th scope="col" colspan="1">Triples</th>
+                      <th scope="col" >Class Number</th>
+                      <th scope="col" >Properties Number</th>
+                      <th scope="col" >Instance Number</th>
+                      <th scope="col" >Graph</th>
+                      <th scope="col" >Query</th>
+                  
               </tr>
             </thead>
             <tbody>
                   <tr>
-                       <th>ESEMPIO</th>
+                <!-- GUARDARE DIMENSIONE DELLA COLONNA, SE IL NOME DEL DATABASE E' TROPPO LUNGO FINISCE NELLA COLONNA VICINO -->
+                       <th scope="row" colspan="3">ESEMPIO 1 </th> 
                         <th>1</th>
                         <th>1</th>
                         <th>1</th>
                         <th>1</th>
+                        <th><button class="btn"><i class="fa fa-home"></i></button></th>
+                        <th><button class="btn"><i class="fa fa-home"></i></button></th>
+                      
                   </tr>
                   <tr>
-                       <th>ESEMPIO 2</th>
+                       <th scope="row" colspan="3">ESEMPIO 2</th>
                         <th>1</th>
                         <th>1</th>
                         <th>1</th>
                         <th>1</th>
+                        <th><button class="btn"><i class="fa fa-home"></i></button></th>
+                        <th><button class="btn"><i class="fa fa-home"></i></button></th>
                         </tr>
                   <tr>
-                           <th>ESEMPIO 3</th>
+                           <th scope="row" colspan="3">ESEMPIO 3</th>
                             <th>1</th>
                             <th>1</th>
                             <th>1</th>
                             <th>1</th>
+                            <th>1</th>
+                        <th>1</th>
                       </tr>
                       <tr>
-                         <th>ESEMPIO 3</th>
-                          <th>1</th>
-                          <th>1</th>
-                          <th>1</th>
-                          <th>1</th>
-                    </tr>
-                    <tr>
-                         <th>ESEMPIO 3</th>
-                          <th>1</th>
-                          <th>1</th>
-                          <th>1</th>
-                          <th>1</th>
-                    </tr>
-                    <tr>
-                         <th>ESEMPIO 3</th>
-                          <th>1</th>
-                          <th>1</th>
-                          <th>1</th>
-                          <th>1</th>
-                    </tr>
-                    <tr>
-                         <th>ESEMPIO 3</th>
-                          <th>1</th>
-                          <th>1</th>
-                          <th>1</th>
-                          <th>1</th>
-                    </tr>
-                    <tr>
-                         <th>ESEMPIO 3</th>
-                          <th>1</th>
-                          <th>1</th>
-                          <th>1</th>
-                          <th>1</th>
-                    </tr>
-                    <tr>
-                         <th>ESEMPIO 3</th>
-                          <th>1</th>
-                          <th>1</th>
-                          <th>1</th>
-                          <th>1</th>
-                    </tr>
-                    <tr>
-                         <th>ESEMPIO 3</th>
-                          <th>1</th>
-                          <th>1</th>
-                          <th>1</th>
-                          <th>1</th>
-                    </tr>
-                    <tr>
-                         <th>ESEMPIO 3</th>
-                          <th>1</th>
-                          <th>1</th>
-                          <th>1</th>
-                          <th>1</th>
-                    </tr>
-                    <tr>
-                         <th>ESEMPIO 3</th>
-                          <th>1</th>
-                          <th>1</th>
-                          <th>1</th>
-                          <th>1</th>
-                    </tr>
-                    <tr>
-                         <th>ESEMPIO 3</th>
-                          <th>1</th>
-                          <th>1</th>
-                          <th>1</th>
-                          <th>1</th>
-                    </tr>
-                    <tr>
-                         <th>ESEMPIO 3</th>
-                          <th>1</th>
-                          <th>1</th>
-                          <th>1</th>
-                          <th>1</th>
-                    </tr>
-                    <tr>
-                         <th>ESEMPIO 3</th>
-                          <th>1</th>
-                          <th>1</th>
-                          <th>1</th>
-                          <th>1</th>
-                    </tr>
-                    <tr>
-                         <th>ESEMPIO 3</th>
-                          <th>1</th>
-                          <th>1</th>
-                          <th>1</th>
-                          <th>1</th>
-                    </tr>
-                
-                </tbody>
+                           <th scope="row" colspan="3">ESEMPIO 3</th>
+                            <th>1</th>
+                            <th>1</th>
+                            <th>1</th>
+                            <th>1</th>
+                            <th>1</th>
+                        <th>1</th>
+                      </tr>
+                       <tr>
+                           <th scope="row" colspan="3">ESEMPIO 2</th>
+                            <th>1</th>
+                            <th>1</th>
+                            <th>1</th>
+                            <th>1</th>
+                            <th>1</th>
+                            <th>1</th>
+                            </tr>
+                      <tr>
+                               <th scope="row" colspan="3">ESEMPIO 3</th>
+                                <th>1</th>
+                                <th>1</th>
+                                <th>1</th>
+                                <th>1</th>
+                                <th>1</th>
+                            <th>1</th>
+                          </tr>
+                          <tr>
+                               <th scope="row" colspan="3">ESEMPIO 3</th>
+                                <th>1</th>
+                                <th>1</th>
+                                <th>1</th>
+                                <th>1</th>
+                                <th>1</th>
+                            <th>1</th>
+                          </tr>
+                           <tr>
+                               <th scope="row" colspan="3">ESEMPIO 2</th>
+                                <th>1</th>
+                                <th>1</th>
+                                <th>1</th>
+                                <th>1</th>
+                                <th>1</th>
+                                <th>1</th>
+                                </tr>
+                          <tr>
+                                   <th scope="row" colspan="3">ESEMPIO 3</th>
+                                    <th>1</th>
+                                    <th>1</th>
+                                    <th>1</th>
+                                    <th>1</th>
+                                    <th>1</th>
+                                <th>1</th>
+                              </tr>
+                              <tr>
+                                   <th scope="row" colspan="3">ESEMPIO 3</th>
+                                    <th>1</th>
+                                    <th>1</th>
+                                    <th>1</th>
+                                    <th>1</th>
+                                    <th>1</th>
+                                <th>1</th>
+                              </tr>
+                     <tr>
+                       <th scope="row" colspan="3">ESEMPIO 2</th>
+                        <th>1</th>
+                        <th>1</th>
+                        <th>1</th>
+                        <th>1</th>
+                        <th>1</th>
+                        <th>1</th>
+                        </tr>
+                  <tr>
+                           <th scope="row" colspan="3">ESEMPIO 3</th>
+                            <th>1</th>
+                            <th>1</th>
+                            <th>1</th>
+                            <th>1</th>
+                            <th>1</th>
+                        <th>1</th>
+                      </tr>
+                      <tr>
+                           <th scope="row" colspan="3">ESEMPIO 3</th>
+                            <th>1</th>
+                            <th>1</th>
+                            <th>1</th>
+                            <th>1</th>
+                            <th>1</th>
+                        <th>1</th>
+                      </tr>
+                     
+                  </tbody>
               </table>
-              </div>
-              </section>
+            </div>
+          </section>
 
               
+              <button class="btn"><i class="fa fa-home"></i></button>
+              <button class="btn"><i class="fa fa-bars"></i></button>
+              <button class="btn"><i class="fa fa-trash"></i></button>
+              <button class="btn"><i class="fa fa-close"></i></button>
+              <button class="btn"><i class="fa fa-folder"></i></button>
 
 <!-- jQuery e plugin JavaScript  -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
