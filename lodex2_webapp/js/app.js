@@ -1,4 +1,4 @@
-window.addEventListener('polymer-ready', function(e)){
+window.addEventListener('polymer-ready', function(e){
 	var app = document.querySelector('lodex-layout');
 	//routing
 	console.log(app)

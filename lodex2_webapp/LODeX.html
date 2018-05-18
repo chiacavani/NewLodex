@@ -19,8 +19,8 @@
     display: inline-block;
     padding-top: .3125rem;
     padding-bottom: .3125rem;
-    margin-right: 8rem;
-    margin-left: 3rem;
+    margin-right: 6rem;
+    margin-left: 4rem;
     font-size: 2.5rem;
     height: 50px;
     line-height: 35px;
@@ -99,11 +99,66 @@ tbody {
 
 }
 
-/* Darker background on mouse-over */
-.btn:hover {
-    background-color: RoyalBlue;
+.btn3 {
+    background-color: rgba(6, 131, 58, 0); /* Green background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 12px 16px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+    border-radius: 50%;
+
 }
 
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
 </style>
 </head>
 
@@ -112,16 +167,36 @@ tbody {
   <!-- Barra Iniziale -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-        <ul class="navbar-nav"> 
+          <ul class="navbar-nav"> 
+              <form class="form-inline my-2 my-lg-0">
+                  <div id="myNav" class="overlay">
+                      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                      <div class="overlay-content">
+                        <a href="#">About</a>
+                         </div>
+                    </div>
+                    <div id="main">
+                        <span style="font-size:30px;cursor:pointer" onclick="openNav()" class="btn3 fa fa-bars" role="button"></span>
+                      </div>
            <li class="nav-item">
-             <a class="navbar-brand" href="#">LODeX<span class="sr-only">(current)</span></a>
+                           
+             <a class="navbar-brand" href="#">LODeX</a>
              <a class="navbar-brand" href="/lodex2/ok/graph-view">Graph View</a>
              <a class="navbar-brand" href="/lodex2/ok/query-panel">Query Panel</a>
            </li>
+           
          </ul>
+         
+            
+              
+          </form>
          </div>
        </nav>
 
+       
+    
+         
+     
 <!-- Tabella  -->
 <section class="content-area">
     <div class="table-area">
@@ -240,7 +315,7 @@ tbody {
                         <th><a href="/lodex2/ok/query-panel" class="btn2 fa fa-angle-double-right" role="button"></a></th>
                       
                   </tr>
-              <th scope="row" colspan="3">ESEMPIO 1 </th> 
+              <th scope="row" colspan="3">CIAO </th> 
                     <th>1</th>
                     <th>1</th>
                     <th>1</th>
@@ -255,11 +330,25 @@ tbody {
             </div>
           </section>
 
-             
 
+             
+          <input class="form-control" id="myInput" type="text" placeholder="Search..">
+          <br>
+
+          <script>
+              function openNav() {
+                  document.getElementById("myNav").style.width = "100%";
+              }
+              
+              function closeNav() {
+                  document.getElementById("myNav").style.width = "0%";
+              }
+              </script>
+                   
 <!-- jQuery e plugin JavaScript  -->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
