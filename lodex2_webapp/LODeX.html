@@ -1,17 +1,24 @@
 <!doctype html>
 
 <html>
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fogli di stile -->
+    <!-- <link rel="stylesheet"  type="text/css" href="css/bootstrap.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<!-- Fogli di stile -->
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
 
 <style>
-  body{
+    body{
     padding-top: 40px; /*per evitare che il contenuto della pagina finisca sotto la navbar*/
 }
 /* STILE BARRA ALTO */
@@ -21,7 +28,7 @@
     padding-bottom: .3125rem;
     margin-right: 6rem;
     margin-left: 4rem;
-    font-size: 2.5rem;
+    font-size: 2rem;
     height: 50px;
     line-height: 35px;
     white-space: nowrap;
@@ -29,75 +36,15 @@
    
 }
 
-/*STILE TABELLA (RESPONSIVE PERCHE' FISSA LA HEADER IN ALTO)*/
 
-.table-area {
-  position: relative;
-  z-index: 0;
-  margin-top: 30px;
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    margin-top: 30px;
 }
 
-table.responsive-table {
-  display: table;
-  /* required for table-layout to be used (not normally necessary; included for completeness) */
-  table-layout: fixed;
-  /* this keeps your columns with fixed with exactly the right width */
-  width: 100%;
-  /* table must have width set for fixed layout to work as expected */
-  height: 100%;
-}
-
-table.responsive-table thead {
-  position: fixed;
-  top: 60px;
-  width: 100%;
-  line-height: 1rem;
-  background: rgb(255, 255, 255);
-  table-layout: fixed;
-  display: table;
-}
-
-table.responsive-table th {
-  background: rgb(255, 255, 255);
-}
-
-table.responsive-table td {
-  line-height: 3em;
-}
-
-table.responsive-table tr > td,
-table.responsive-table th {
-  text-align: center;
-}
-
-tbody {
-    display: table-row-group;
-    vertical-align: inherit;
-    border-color: inherit;
-}
-
-/* Style buttons */
-.btn {
-    background-color: rgb(255, 30, 30); /* Red background */
-    border: none; /* Remove borders */
-    color: white; /* White text */
-    padding: 12px 16px; /* Some padding */
-    font-size: 16px; /* Set a font size */
-    cursor: pointer; /* Mouse pointer on hover */
-    border-radius: 50%;
-
-}
-
-.btn2 {
-    background-color: rgb(6, 131, 58); /* Green background */
-    border: none; /* Remove borders */
-    color: white; /* White text */
-    padding: 12px 16px; /* Some padding */
-    font-size: 16px; /* Set a font size */
-    cursor: pointer; /* Mouse pointer on hover */
-    border-radius: 50%;
-
-}
 
 .btn3 {
     background-color: rgba(6, 131, 58, 0); /* Green background */
@@ -159,182 +106,133 @@ tbody {
     right: 35px;
   }
 }
+
 </style>
-</head>
 
 <body>
-  
-  <!-- Barra Iniziale -->
+
+    <!-- Barra Iniziale -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-          <ul class="navbar-nav"> 
-              <form class="form-inline my-2 my-lg-0">
+            <ul class="nav navbar-nav" id="myTab" role="tablist">
+                <form class="form-inline my-2 my-lg-0">
                   <div id="myNav" class="overlay">
                       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                       <div class="overlay-content">
-                        <a href="#">About</a>
+                        <a href="/lodex2/about">About</a>
                          </div>
                     </div>
+                </form>
                     <div id="main">
                         <span style="font-size:30px;cursor:pointer" onclick="openNav()" class="btn3 fa fa-bars" role="button"></span>
                       </div>
-           <li class="nav-item">
+                    
+                <li class="nav-item">
+                    <a class="navbar-brand nav-link active " id="dataset-tab" data-toggle="tab" href="#dataset" role="tab" aria-controls="home"
+                        aria-selected="true">LODeX
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand nav-link" id="graph-tab" data-toggle="tab" href="#graph" role="tab" aria-controls="profile" aria-selected="false">Graph View</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand nav-link" id="query-tab" data-toggle="tab" href="#query" role="tab" aria-controls="contact" aria-selected="false">Query Panel</a>
+                </li>
+            </ul>
+                
+        </div>
+    </nav>
+    <!-- <input class="form-control" id="myInput" type="text" placeholder="Search..">
+    <br> -->
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="dataset" role="tabpanel" aria-labelledby="dataset-tab">
+
+            <table class="table table-hover" id="myTable">
+                <thead>
+                    <tr class="tr-fixed">
+                        <th>
+                            <a>Dataset Name</a>
+
+                          
+                                                       
+<div class="search-container">
+
+<form action="#dataset" method="get">
+<input class="Search" id="myInput" type="text" placeholder="Search.." >
+<button type="submit"><i class="fa fa-search "></i></button>
+</form>
+
+</div>
+
+
+
+                            
+
                            
-             <a class="navbar-brand" href="#">LODeX</a>
-             <a class="navbar-brand" href="/lodex2/ok/graph-view">Graph View</a>
-             <a class="navbar-brand" href="/lodex2/ok/query-panel">Query Panel</a>
-           </li>
+                        </th>
+
+
+
+                        <th> <a>Triples</a>
+                            
+                        </th>
+
+                        <th> <a>Class Number</a>
+                           
+                        </th>
+
+                        <th> <a>Properties Number</a>
+                           
+                        </th>
+
+                        <th> <a>Instance Number</a>
+                            
+                        </th>
+
+                        <th>Azioni</th>
+
+                    </tr>
+                    
+                </thead>
+                
+                <tbody id="dataset-elements">
+
+                </tbody>
+            </table>
            
-         </ul>
-         
-            
-              
-          </form>
-         </div>
-       </nav>
-
-       
+        </div>
+        <div class="tab-pane fade" id="graph" role="tabpanel" aria-labelledby="graph-tab">d</div>
+        <div class="tab-pane fade" id="query" role="tabpanel" aria-labelledby="query-tab">...</div>
+    </div>
     
-         
-     
-<!-- Tabella  -->
-<section class="content-area">
-    <div class="table-area">
-      <table class="responsive-table table">
-            <thead class="thead-light">
-              <tr>
-                <th scope="col" colspan="3">Dataset Name</th>
-                      <th scope="col" colspan="1">Triples</th>
-                      <th scope="col" >Class Number</th>
-                      <th scope="col" >Properties Number</th>
-                      <th scope="col" >Instance Number</th>
-                      <th scope="col" >Graph</th>
-                      <th scope="col" >Query</th>
-                  
-              </tr>
-            </thead>
-            <tbody>
-                  <tr>
-                <!-- GUARDARE DIMENSIONE DELLA COLONNA, SE IL NOME DEL DATABASE E' TROPPO LUNGO FINISCE NELLA COLONNA VICINO -->
-                       <th scope="row" colspan="3">ESEMPIO 1 </th> 
-                        <th>1</th>
-                        <th>1</th>
-                        <th>1</th>
-                        <th>1</th>
-                        <th><a href="/lodex2/ok/graph-view" class="btn fa fa-angle-double-right" role="button"></a></th>
-                        <th><a href="/lodex2/ok/query-panel" class="btn2 fa fa-angle-double-right" role="button"></a></th>
-                      
-                  </tr>
-                  <th scope="row" colspan="3">ESEMPIO 1 </th> 
-                        <th>1</th>
-                        <th>1</th>
-                        <th>1</th>
-                        <th>1</th>
-                        <th><a href="/lodex2/ok/graph-view" class="btn fa fa-angle-double-right" role="button"></a></th>
-                        <th><a href="/lodex2/ok/query-panel" class="btn2 fa fa-angle-double-right" role="button"></a></th>
-                      
-                  </tr>
-              <th scope="row" colspan="3">ESEMPIO 1 </th> 
-                    <th>1</th>
-                    <th>1</th>
-                    <th>1</th>
-                    <th>1</th>
-                    <th><a href="/lodex2/ok/graph-view" class="btn fa fa-angle-double-right" role="button"></a></th>
-                    <th><a href="/lodex2/ok/query-panel" class="btn2 fa fa-angle-double-right" role="button"></a></th>
-                  
-              </tr>
-              <th scope="row" colspan="3">ESEMPIO 1 </th> 
-                <th>1</th>
-                <th>1</th>
-                <th>1</th>
-                <th>1</th>
-                <th><a href="/lodex2/ok/graph-view" class="btn fa fa-angle-double-right" role="button"></a></th>
-                <th><a href="/lodex2/ok/query-panel" class="btn2 fa fa-angle-double-right" role="button"></a></th>
-              
-          </tr>
-          <th scope="row" colspan="3">ESEMPIO 1 </th> 
-                <th>1</th>
-                <th>1</th>
-                <th>1</th>
-                <th>1</th>
-                <th><a href="/lodex2/ok/graph-view" class="btn fa fa-angle-double-right" role="button"></a></th>
-                <th><a href="/lodex2/ok/query-panel" class="btn2 fa fa-angle-double-right" role="button"></a></th>
-              
-          </tr>
-      <th scope="row" colspan="3">ESEMPIO 1 </th> 
-            <th>1</th>
-            <th>1</th>
-            <th>1</th>
-            <th>1</th>
-            <th><a href="/lodex2/ok/graph-view" class="btn fa fa-angle-double-right" role="button"></a></th>
-            <th><a href="/lodex2/ok/query-panel" class="btn2 fa fa-angle-double-right" role="button"></a></th>
-          
-      </tr>
-  <th scope="row" colspan="3">ESEMPIO 1 </th> 
-                        <th>1</th>
-                        <th>1</th>
-                        <th>1</th>
-                        <th>1</th>
-                        <th><a href="/lodex2/ok/graph-view" class="btn fa fa-angle-double-right" role="button"></a></th>
-                        <th><a href="/lodex2/ok/query-panel" class="btn2 fa fa-angle-double-right" role="button"></a></th>
-                      
-                  </tr>
-                  <th scope="row" colspan="3">ESEMPIO 1 </th> 
-                        <th>1</th>
-                        <th>1</th>
-                        <th>1</th>
-                        <th>1</th>
-                        <th><a href="/lodex2/ok/graph-view" class="btn fa fa-angle-double-right" role="button"></a></th>
-                        <th><a href="/lodex2/ok/query-panel" class="btn2 fa fa-angle-double-right" role="button"></a></th>
-                      
-                  </tr>
-              <th scope="row" colspan="3">ESEMPIO 1 </th> 
-                    <th>1</th>
-                    <th>1</th>
-                    <th>1</th>
-                    <th>1</th>
-                    <th><a href="/lodex2/ok/graph-view" class="btn fa fa-angle-double-right" role="button"></a></th>
-                    <th><a href="/lodex2/ok/query-panel" class="btn2 fa fa-angle-double-right" role="button"></a></th>
-                  
-              </tr>
-          <th scope="row" colspan="3">ESEMPIO 1 </th> 
-                        <th>1</th>
-                        <th>1</th>
-                        <th>1</th>
-                        <th>1</th>
-                        <th><a href="/lodex2/ok/graph-view" class="btn fa fa-angle-double-right" role="button"></a></th>
-                        <th><a href="/lodex2/ok/query-panel" class="btn2 fa fa-angle-double-right" role="button"></a></th>
-                      
-                  </tr>
-                  <th scope="row" colspan="3">ESEMPIO 1 </th> 
-                        <th>1</th>
-                        <th>1</th>
-                        <th>1</th>
-                        <th>1</th>
-                        <th><a href="/lodex2/ok/graph-view" class="btn fa fa-angle-double-right" role="button"></a></th>
-                        <th><a href="/lodex2/ok/query-panel" class="btn2 fa fa-angle-double-right" role="button"></a></th>
-                      
-                  </tr>
-              <th scope="row" colspan="3">CIAO </th> 
-                    <th>1</th>
-                    <th>1</th>
-                    <th>1</th>
-                    <th>1</th>
-                    <th><a href="/lodex2/ok/graph-view" class="btn fa fa-angle-double-right" role="button"></a></th>
-                    <th><a href="/lodex2/ok/query-panel" class="btn2 fa fa-angle-double-right" role="button"></a></th>
-                  
-              </tr>
-                     
-                  </tbody>
-              </table>
+    <script id="template-dataset-elements" type="text/template7">
+            {{#each data}}
+            <tr>
+                <td> {{name}} </td>
+                <td> {{triples}} </td>
+                <td> {{classesCount}} </td>
+                <td> {{propCount}} </td>
+                <td> {{instances}} </td>
+                <td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="ssbtn btn btn-success" data-id="{{ id }}">SS</button>
+                        <button type="button" class="csbtn btn btn-danger" data-id="{{ id }}">CS</button>
             </div>
-          </section>
+            </td>
+            </td>
+            </tr>
+            {{/each}}
+        </script>
 
+    <!-- jQuery e plugin JavaScript  -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/template7.min.js"></script>
 
-             
-          
-
-          <script>
+    
+    <script>
               function openNav() {
                   document.getElementById("myNav").style.width = "100%";
               }
@@ -343,14 +241,79 @@ tbody {
                   document.getElementById("myNav").style.width = "0%";
               }
               </script>
-                   
-<!-- jQuery e plugin JavaScript  -->
+    
+    <script>
+        $.ajax({
+            type: 'GET',
+            url: './index',
+            dataType: 'json',
+            success: function (data) {
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+                var template = $('#template-dataset-elements').html();
+                var compiledTemplate = Template7.compile(template);
+                $('#dataset-elements').html(compiledTemplate(data));
+
+
+
+
+                $('#dataset-elements .ssbtn').click(function () {
+
+                    var ssid = $(this).data("id");
+                    $('#myTab a[href="#graph"]').tab('show');
+                    $.ajax({
+                        type: 'GET',
+                        url: './getDataSS/' + ssid,
+                        dataType: 'json',
+                        success: function (data) {
+                            console.log(data);
+                        }
+                    });
+
+                });
+
+
+
+
+                $('#dataset-elements .csbtn').click(function () {
+
+                    var csid = $(this).data("id");
+                    $('#myTab a[href="#graph"]').tab('show');
+                    $.ajax({
+                        type: 'GET',
+                        url: './getDataCS/' + csid,
+                        dataType: 'json',
+                        success: function (data) {
+                            console.log(data);
+                        }
+                    });
+
+                });
+
+
+
+
+            }
+        });
+    </script>
+
+
+<script>
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#dataset-elements td").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+    </script>
+
+
+
+
+
+
 
 </body>
-    
-       </html>
+
+</html>
