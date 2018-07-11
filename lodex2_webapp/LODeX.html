@@ -547,32 +547,44 @@ body{
                                    
                                if (d.index == control.links[j].source.index || d.index == control.links[j].target.index){
                                         for (var k=0; k<control.links[j].label.length; k++){
-                                            console.log(control.links[j].label[k].name);
-                                htmlprop += '<p>' + control.links[j].label[k].name + '</p>';
+                                            var prop=control.links[j].label[k].name;
+                                            var result = prop.fontcolor(getColor(d)); //DA RIVEDERE PERCHé NON CORRETTO COLORE
+
+                                htmlprop += '<p>' + result;
+                                if(d.index == control.links[j].source.index ){
+                                    console.log(control.links[j].target.name);
+                                    htmlprop += " → " + control.links[j].target.name + '</p>';
+                                }
+
+                                if(d.index == control.links[j].target.index ){
+                                    console.log(control.links[j].source.name);
+                                    htmlprop += " ← " + control.links[j].source.name + '</p>';
+                                }
+
+
                                 }
 
                                                           
                                }
                                }
-                                
-
-                 $('#links').click(function(){
+                               $('#links').click(function(){
                       
-                    if (!control.nodeClickInProgress ) {
-                          control.nodeClickInProgress = true;
-                          setTimeout(function(){
-                              if (control.nodeClickInProgress) { 
-                                  control.nodeClickInProgress = false;
-                                  if (control.options.nodeFocus) {
-                                      d.isCurrentlyFocused = !d.isCurrentlyFocused;
-                                      doTheTreeViz(makeFilteredData(control));
-                                  }
-                              }
-                          },control.clickHack); 
-                      }
-                          
-                  })  
+                      if (!control.nodeClickInProgress ) {
+                            control.nodeClickInProgress = true;
+                            setTimeout(function(){
+                                if (control.nodeClickInProgress) { 
+                                    control.nodeClickInProgress = false;
+                                    if (control.options.nodeFocus) {
+                                        d.isCurrentlyFocused = !d.isCurrentlyFocused;
+                                        doTheTreeViz(makeFilteredData(control));
+                                    }
+                                }
+                            },control.clickHack); 
+                        }
+                            
+                    })   
 
+                 
                   $('#prop').click(function(){
                       $('#properties').empty();
                       $('#properties').append(htmlprop);
@@ -585,7 +597,7 @@ body{
 	                })
             
 
-
+              
 
                   .call(force.drag);
 
