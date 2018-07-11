@@ -214,7 +214,18 @@ body{
     overflow-y: scroll;
     height: 500px;
     width: 300px;
-}     
+    
+}   
+
+#nav-profile, #nav-home{
+    height: 450px;
+    width: 315px;
+    overflow-y: auto; /*AUTO INSERISCE LO SCROLL SOLO SE TESTO ECCEDE LE DIM PREFISSATE*/
+    overflow-x: auto;
+    /* DA MODIFICARE L'ALTEZZA */
+}
+
+
        </style>
 </head>
 <body>
@@ -301,17 +312,31 @@ body{
             
         <div class="tab-pane fade" id="graph" role="tabpanel" aria-labelledby="graph-tab">
                    
-               
+                <h1>Node: <span class="text-danger" id="nameNode"></span></h1>
           
             
             <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                             
-                                    <button type="button" id="links" class="btn btn-primary">Links</button>
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Attributes</a>
+                              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Properties</a>
+                                </div>
+                          </nav>
+                          <div class="container">
+                          <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"></div>
+                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"></div>
+                          </div></div>
+
+
+
+                                    <!-- <button type="button" id="links" class="btn btn-primary">Links</button>
                                     <button type="button" id="att" class="btn btn-secondary">Attributes</button>
-                                    <button type="button" id="prop" class="btn btn btn-danger">Properties</button>
+                                    <button type="button" id="prop" class="btn btn btn-danger">Properties</button> -->
                                   
-                    <div id="properties"></div>           
+                            
 
                     </div>
                     <div class="col-lg-8" id="chart"></div>
@@ -523,14 +548,22 @@ body{
 
 
                     .on("click", function(d) {
-                        
+                        htmlnome=' ';
                         htmlatt=' ';
                         htmlprop=' ';
                         
 
                       
                         // MOSTRA ATTRIBUTI NODES
-                        $('#properties').empty();
+                        $('#nav-home').empty();
+                        $('#nav-profile').empty();
+                        $('#nameNode').empty(); 
+                        
+                        htmlnome = d.name + " (" + d.ni + ") ";
+
+                       
+            
+
                        for (var i=0; i< d.att.length; ++i){
 
                                     htmlatt += '<p>' + d.att[i].p + '</p>';        
@@ -585,15 +618,20 @@ body{
                     })   
 
                  
-                  $('#prop').click(function(){
-                      $('#properties').empty();
-                      $('#properties').append(htmlprop);
+                 $('#nav-profile').append(htmlprop);
+                 $('#nav-home').append(htmlatt);
+                 $('#nameNode').append(htmlnome);
+
+
+                  /* $('#prop').click(function(){
+                      $('#nav-profile').empty();
+                      $('#nav-profile').append(htmlprop);
                   })
 
                    $('#att').click(function(){
-                      $('#properties').empty();
-                      $('#properties').append(htmlatt);
-                  })
+                      $('#nav-home').empty();
+                      $('#nav-home').append(htmlatt);
+                  }) */
 	                })
             
 
