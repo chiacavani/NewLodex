@@ -450,6 +450,22 @@ body{
                             dataType: 'json',
                             success: function (data) {
                                 console.log(data);
+
+                            for (var i=0;i<data.nodes.length;i++){
+                                    data.nodes[i].count=10;
+                                }
+                                                  
+                                
+                                
+
+                                window['mcpherTreeData'] = {"d3":{"options":{"radius":4,"fontSize":9,"labelFontSize":14,"gravity":0.1,"height":window.screen.height,"nodeFocusColor":"black","nodeFocusRadius":25,"nodeFocus":true,"linkDistance":150,"charge":-220,"nodeResize":"count","nodeLabel":"label","linkName":"tag"},"data":{"nodes":data.nodes,"links":data.links}}};
+              
+                                initialize().then (
+                                    function (control) {
+                                        doTheTreeViz(control);
+                                    }
+                                );
+
                             }
                         });
 
@@ -494,6 +510,8 @@ body{
             function doTheTreeViz(control) {
                 var htmlatt = ' ';
                 var htmlprop = ' ';
+                var htmlattCS = ' ';
+                var htmlpropCS = ' ';
               var svg = control.svg;
           
               var force = control.force;
@@ -544,13 +562,12 @@ body{
 
 
                   
-                  
-
-
-                    .on("click", function(d) {
+                  .on("click", function(d) {
                         htmlnome=' ';
                         htmlatt=' ';
                         htmlprop=' ';
+                     
+                        var ok=0;
                         
 
                       
@@ -561,7 +578,7 @@ body{
                         
                         htmlnome = d.name + " (" + d.ni + ") ";
 
-                       
+                        //FASE SS          
             
 
                        for (var i=0; i< d.att.length; ++i){
@@ -570,7 +587,7 @@ body{
                                     
 
                        }
-                                console.log(control.links);
+                             
                               // DEFINISCO ID NODES che sono d.index             
                                    
                                //MOSTRO PROP LINK
@@ -580,18 +597,26 @@ body{
                                    
                                if (d.index == control.links[j].source.index || d.index == control.links[j].target.index){
                                         for (var k=0; k<control.links[j].label.length; k++){
+                                            ok=0;
                                             var prop=control.links[j].label[k].name;
                                             var result = prop.fontcolor(getColor(d)); //DA RIVEDERE PERCHé NON CORRETTO COLORE
 
-                                htmlprop += '<p>' + result;
-                                if(d.index == control.links[j].source.index ){
-                                    console.log(control.links[j].target.name);
-                                    htmlprop += " → " + control.links[j].target.name + '</p>';
+                                htmlprop += '<p>' + result + " (" + control.links[j].label[k].np + ") ";
+
+                                if(d.index == control.links[j].source.index && d.index == control.links[j].target.index && ok==0){
+                                    htmlprop += " ↔ " + control.links[j].target.name + '</p>';
+                                    ok=1;
                                 }
 
-                                if(d.index == control.links[j].target.index ){
-                                    console.log(control.links[j].source.name);
+                                if(d.index == control.links[j].source.index && ok==0){
+                                    htmlprop += " → " + control.links[j].target.name + '</p>';
+                                    ok=1;
+                                }
+
+                                if(d.index == control.links[j].target.index && ok==0 ){
+                                    
                                     htmlprop += " ← " + control.links[j].source.name + '</p>';
+                                    ok=1;
                                 }
 
 
@@ -617,6 +642,7 @@ body{
                             
                     })   
 
+
                  
                  $('#nav-profile').append(htmlprop);
                  $('#nav-home').append(htmlatt);
@@ -632,6 +658,10 @@ body{
                       $('#nav-home').empty();
                       $('#nav-home').append(htmlatt);
                   }) */
+
+                  
+
+
 	                })
             
 
@@ -717,7 +747,8 @@ body{
               function getColor(d) {
                   return control.options.nodeFocus && d.isCurrentlyFocused ? control.options.nodeFocusColor  : control.color(d.vocab) ;
               }
-          
+            
+              
              }
           
           function makeFilteredData(control,selectedNode){
