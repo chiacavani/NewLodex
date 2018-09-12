@@ -310,42 +310,6 @@ body{
         </div>
        
             
-        <div class="tab-pane fade" id="graph" role="tabpanel" aria-labelledby="graph-tab">
-                   
-                <h1>Node: <span class="text-danger" id="nameNode"></span></h1>
-          
-            
-            <div class="row">
-                    <div class="col-lg-3">
-                            
-                        <nav>
-                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Attributes</a>
-                              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Properties</a>
-                                </div>
-                          </nav>
-                          <div class="container">
-                          <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"></div>
-                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"></div>
-                          </div></div>
-
-
-
-                                    <!-- <button type="button" id="links" class="btn btn-primary">Links</button>
-                                    <button type="button" id="att" class="btn btn-secondary">Attributes</button>
-                                    <button type="button" id="prop" class="btn btn btn-danger">Properties</button> -->
-                                  
-                            
-
-                    </div>
-                    <div class="col-lg-8" id="chart"></div>
-                </div>
-
-    
-
-        <div class="tab-pane fade" id="query" role="tabpanel" aria-labelledby="query-tab">...</div>
-    </div>
     
     <script id="template-dataset-elements" type="text/template7" >
             {{#each data}}
@@ -381,17 +345,14 @@ body{
     <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
 
     <script>
-              function openNav() {
-                  document.getElementById("myNav").style.width = "100%";
-              }
-              
-              function closeNav() {
-                  document.getElementById("myNav").style.width = "0%";
-              }
-              </script>
-
-
-
+        function openNav() {
+            document.getElementById("myNav").style.width = "100%";
+        }
+        
+        function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+        }
+        </script>
 <script>
     $.ajax({
         type: 'GET',
@@ -447,8 +408,3 @@ body{
 
     
 </script>
-
-
-</body>
-
-</html>

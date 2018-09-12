@@ -22,6 +22,24 @@ class MainHandlerOk(tornado.web.RequestHandler):
         #self.render('LODeX.html')
         with open('LODeX.html', 'r') as file:
             self.write(file.read())
+class SchemaSummary(tornado.web.RequestHandler):
+    def get(self,endpoint_id):
+        self.set_header('Content-Type', '') # I have to set this header 
+        #https://stackoverflow.com/questions/17284286/disable-template-processing-in-tornadoweb
+        #https://github.com/tornadoweb/tornado/blob/master/tornado/template.py
+        #http://www.tornadoweb.cn/en/documentation#templates
+        #https://github.com/tornadoweb/tornado/blob/master/tornado/template.py
+        self.render('ss.html')
+
+class ClusterSchema(tornado.web.RequestHandler):
+    def get(self,endpoint_id):
+        self.set_header('Content-Type', '') # I have to set this header 
+        #https://stackoverflow.com/questions/17284286/disable-template-processing-in-tornadoweb
+        #https://github.com/tornadoweb/tornado/blob/master/tornado/template.py
+        #http://www.tornadoweb.cn/en/documentation#templates
+        #https://github.com/tornadoweb/tornado/blob/master/tornado/template.py
+        self.render('cs.html')
+        
 
 class About(tornado.web.RequestHandler):
     def get(self):
@@ -399,6 +417,8 @@ if __name__ == "__main__":
         (r"/lodex2/getDataSS/([0-9]+)", DataHandlerSS),
         (r"/lodex2/getDataCS/([0-9]+)", DataHandlerCS),
         (r"/lodex2/about", About),
+        (r"/lodex2/ss/([0-9]+)",SchemaSummary),
+        (r"/lodex2/cs/([0-9]+)",ClusterSchema),
         #     (r"/lodex2/query", QueryDataHandler)
     ],
         static_path=os.path.join(os.path.dirname(__file__), "static"), db=db, autoreload=True, debug=True)
